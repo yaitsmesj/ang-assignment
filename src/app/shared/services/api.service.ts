@@ -3,6 +3,7 @@ import { Http, Headers, Response, URLSearchParams } from "@angular/http";
 import { Observable } from "rxjs";
 import { environment } from "src/environments/environment";
 import { map, catchError } from "rxjs/operators";
+import { throwError } from 'rxjs';
 
 @Injectable()
 export class ApiService {
@@ -20,13 +21,14 @@ export class ApiService {
     }
 
     private formatErrors(error: any) {
-        return Observable.throw(error.json());
+        console.log(JSON.parse(error._body));
+        return throwError(JSON.parse(error._body));
     }
 
     post(path: string, body: Object = {}): Observable<any> {
         return this.http.post(`${environment.api_url}${path}`,
         JSON.stringify(body), { headers: this.setHeaders() })
-        .pipe(map((res: Response) => res.json()), catchError(this.formatErrors));
+        .pipe(map((res: Response) => {return (JSON.parse( res.text()))}), catchError(this.formatErrors));
 
     }
 }

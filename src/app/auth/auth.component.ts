@@ -12,7 +12,7 @@ export class AuthComponent implements OnInit {
     title: String = '';
     isSubmitting: Boolean = false;
     authForm: FormGroup;
-    errors: Errors = new Errors();
+    errors: Errors = {errors: {}};
 
     constructor(
         private route: ActivatedRoute,
@@ -37,15 +37,21 @@ export class AuthComponent implements OnInit {
 
     submitForm() {
         this.isSubmitting = true;
-        this.errors = new Errors();
+        this.errors = {errors: {}};
         const credentials = this.authForm.value;
+        console.log(credentials);
         this.userService.attemptAuth(this.authType, credentials)
         .subscribe(
-            data => this.router.navigateByUrl('/'),
+            data => {
+                console.log(data);
+                this.router.navigateByUrl('/');
+            },
             err => {
                 this.errors = err;
                 this.isSubmitting = false;
+                console.log(this.errors);
             }
         );
+        console.log('submit form ends');
     }
 }
