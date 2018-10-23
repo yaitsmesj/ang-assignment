@@ -19,6 +19,7 @@ export class ArticleListComponent {
         if (config) {
             this.query = config;
             this.currentPage = 1;
+            console.log('In article list component');
             this.runQuery();
         }
     }
@@ -41,16 +42,14 @@ export class ArticleListComponent {
             this.query.filters.limit = this.limit;
             this.query.filters.offset = (this.limit * (this.currentPage -1));
         }
-
         this.articleService.query(this.query)
         .subscribe(data => {
             this.loading = false;
             this.results = data.articles;
+            console.log(this.results);
 
             this.totalPages = Array.from(new Array(Math.ceil(data.articlesCount / this.limit)), (val, index) => index + 1);
         });
     }
-
-
 
 }

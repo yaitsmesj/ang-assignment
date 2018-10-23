@@ -1,15 +1,17 @@
 import { Injectable } from "@angular/core";
-import { Http, Headers, Response, URLSearchParams } from "@angular/http";
+import { Headers, Response, URLSearchParams } from "@angular/http";
 import { Observable } from "rxjs";
 import { environment } from "src/environments/environment";
 import { map, catchError } from "rxjs/operators";
 import { throwError } from 'rxjs';
-import { HttpParams } from "@angular/common/http";
+import { HttpHeaders, HttpClient, HttpParams } from '@angular/common/http';
+import { JwtService } from "./jwt.service";
 
 @Injectable()
 export class ApiService {
     constructor(
-        private http: Http
+        private http: HttpClient,
+        private jwtService: JwtService
     ) { }
 
     private setHeaders(): Headers {
@@ -22,14 +24,13 @@ export class ApiService {
     }
 
     private formatErrors(error: any) {
-        console.log(JSON.parse(error._body));
-        return throwError(JSON.parse(error._body));
+        return throwError(error.error);
     }
 
     post(path: string, body: Object = {}): Observable<any> {
         return this.http.post(`${environment.api_url}${path}`,
-            JSON.stringify(body), { headers: this.setHeaders() })
-            .pipe(map((res: Response) => { return (JSON.parse(res.text())) }), catchError(this.formatErrors));
+            JSON.stringify(body))
+            .pipe(catchError(this.formatErrors));
 
     }
 

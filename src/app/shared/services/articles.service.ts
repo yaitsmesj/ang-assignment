@@ -21,7 +21,7 @@ export class ArticleService {
         });
 
         return this.apiService.get(
-            'articles' + ((config.type === 'feed') ? '/feed' : ''),
+            '/articles' + ((config.type === 'feed') ? '/feed' : ''),
             new HttpParams({ fromObject: params })
         );
     }

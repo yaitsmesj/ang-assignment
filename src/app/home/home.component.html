@@ -14,16 +14,13 @@
                 <div class="feed-toggle">
                     <ul class="nav nav-pills outline-active">
                         <li class="nav-item">
-                            <a class="nav-link"
-                                [ngClass]="{'active': listConfig.type === 'feed'}"
-                                (click)="setListTo('feed')">
+                            <a class="nav-link" [ngClass]="{'active': listConfig.type === 'feed'}" (click)="setListTo('feed')">
                                 Your Feed
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" 
-                            [ngClass]="{'active': listConfig.type === 'all' && !listConfig.filters.tag}"
-                            (click)="setListTo('all')">
+                            <a class="nav-link" [ngClass]="{'active': listConfig.type === 'all' && !listConfig.filters.tag}"
+                                (click)="setListTo('all')">
                                 Global Feed
                             </a>
                         </li>
@@ -34,6 +31,7 @@
                         </li> -->
                     </ul>
                 </div>
+                <app-article-list [limit]="10" [config]="listConfig"></app-article-list>
 
             </div>
 

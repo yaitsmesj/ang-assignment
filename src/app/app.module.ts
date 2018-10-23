@@ -11,8 +11,26 @@ import {
   UserService
 } from './shared';
 import { AuthModule } from './auth/auth.module';
+import { HttpClientModule } from '@angular/common/http';
 
-const rootRouting: ModuleWithProviders = RouterModule.forRoot([], {useHash: true});
+const rootRouting: ModuleWithProviders = RouterModule.forRoot([
+    // {
+    //   path: 'settings',
+    //   loadChildren: './settings/settings.module#SettingsModule'
+    // },
+    // {
+    //   path: 'profile',
+    //   loadChildren: './profile/profile.module#ProfileModule'
+    // },
+    // {
+    //   path: 'editor',
+    //   loadChildren: './editor/editor.module#EditorModule'
+    // },
+    {
+      path: 'article',
+      loadChildren: './article/article.module#ArticleModule'
+    }
+], {useHash: true});
 
 @NgModule({
   declarations: [
@@ -25,7 +43,8 @@ const rootRouting: ModuleWithProviders = RouterModule.forRoot([], {useHash: true
     SharedModule,
     HomeModule,
     rootRouting,
-    AuthModule
+    AuthModule,
+    HttpClientModule
   ],
   providers: [
     ApiService,UserService

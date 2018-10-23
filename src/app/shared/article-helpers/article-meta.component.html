@@ -5,10 +5,10 @@
 
     <div class="info">
         <a class="author" [routerLink]="['/profile', article.author.username]">
-            {{ aritcle.author.username }}
+            {{ article.author.username }}
         </a>
         <span class="date">
-            {{ aritcle.createdAt | data: 'longDate' }}
+            {{ article.createdAt | date: 'longDate' }}
         </span>
     </div>
 

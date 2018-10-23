@@ -5,6 +5,13 @@ import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 import { ListErrorsComponent } from './list-errors.component';
 import { ShowAuthedDirective } from './show-authed.directive';
+import { ArticleListComponent, ArticleMetaComponent, ArticlePreviewComponent } from './article-helpers';
+import { ArticleService, ApiService, UserService } from './services';
+import { HttpClient, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpTokenInterceptor } from './http.token.interceptor';
+import { JwtService } from './services/jwt.service';
+import { CommentsService } from './services/comments.service';
+
 
 @NgModule({
   imports: [
@@ -16,7 +23,14 @@ import { ShowAuthedDirective } from './show-authed.directive';
   ],
   declarations: [
     ListErrorsComponent,
-    ShowAuthedDirective
+    ShowAuthedDirective,
+    ArticleListComponent,
+    ArticleMetaComponent,
+    ArticlePreviewComponent
+  ],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: HttpTokenInterceptor,
+    multi: true }, ArticleService, JwtService, ApiService, UserService,CommentsService
   ],
   exports: [
     CommonModule,
@@ -25,7 +39,9 @@ import { ShowAuthedDirective } from './show-authed.directive';
     HttpModule,
     RouterModule,
     ListErrorsComponent,
-    ShowAuthedDirective
-  ]
+    ShowAuthedDirective,
+    ArticleListComponent,
+    ArticleMetaComponent,
+    ArticlePreviewComponent  ]
 })
 export class SharedModule {}

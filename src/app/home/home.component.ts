@@ -1,6 +1,6 @@
 import { Component } from "@angular/core";
 import { Router } from "@angular/router";
-import { UserService } from "../shared";
+import { UserService, ArticleListConfig } from "../shared";
 
 @Component({
     selector: 'home-page',
@@ -14,6 +14,10 @@ export class HomeComponent {
     ) {}
 
     isAuthenticated: boolean;
+    listConfig: ArticleListConfig = {
+        type: 'all',
+        filters: {}
+      };
     
     ngOnInit() {
         this.userService.isAuthenticated.subscribe(
@@ -35,6 +39,6 @@ export class HomeComponent {
             return;
         }
 
-        // this.listConfig = {type: type, filters: filters};
+         this.listConfig = {type: type, filters: filters};
     }
 }
