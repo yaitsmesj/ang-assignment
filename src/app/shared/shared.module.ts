@@ -11,6 +11,7 @@ import { HttpClient, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HttpTokenInterceptor } from './http.token.interceptor';
 import { JwtService } from './services/jwt.service';
 import { CommentsService } from './services/comments.service';
+import { favoriteButtonComponent, FollowButtonComponent } from './buttons';
 
 
 @NgModule({
@@ -26,7 +27,9 @@ import { CommentsService } from './services/comments.service';
     ShowAuthedDirective,
     ArticleListComponent,
     ArticleMetaComponent,
-    ArticlePreviewComponent
+    ArticlePreviewComponent,
+    favoriteButtonComponent,
+    FollowButtonComponent
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: HttpTokenInterceptor,
@@ -42,6 +45,9 @@ import { CommentsService } from './services/comments.service';
     ShowAuthedDirective,
     ArticleListComponent,
     ArticleMetaComponent,
-    ArticlePreviewComponent  ]
+    ArticlePreviewComponent,
+    favoriteButtonComponent,
+    FollowButtonComponent
+  ]
 })
 export class SharedModule {}
