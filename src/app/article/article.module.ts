@@ -4,6 +4,7 @@ import { ArticleRoutingModule } from "./article-routing.module";
 import { ArticleComponent } from "./article.component";
 import { ArticleCommentComponent } from "./article-comment.component";
 import { ArticleResolver } from "./article-resolver.service";
+import { MarkdownPipe } from "./markdown.pipe";
 
 @NgModule({
     imports: [
@@ -12,7 +13,8 @@ import { ArticleResolver } from "./article-resolver.service";
     ],
     declarations: [
         ArticleComponent,
-        ArticleCommentComponent
+        ArticleCommentComponent,
+        MarkdownPipe
     ],
     providers: [
         ArticleResolver

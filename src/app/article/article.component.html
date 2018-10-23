@@ -20,7 +20,7 @@
               </span>
       
               <span [hidden]="canModify">
-                <app-follow-button
+                <!-- <app-follow-button
                   [profile]="article.author"
                   (toggle)="onToggleFollowing($event)">
                 </app-follow-button>
@@ -29,7 +29,7 @@
                   [article]="article"
                   (toggle)="onToggleFavorite($event)">
                   {{ article.favorited ? 'Unfavorite' : 'Favorite' }} Article <span class="counter">({{ article.favoritesCount }})</span>
-                </app-favorite-button>
+                </app-favorite-button> -->
               </span>
       
             </app-article-meta>
@@ -72,7 +72,7 @@
               </span>
       
               <span [hidden]="canModify">
-                <app-follow-button
+                <!-- <app-follow-button
                   [profile]="article.author"
                   (toggle)="onToggleFollowing($event)">
                 </app-follow-button>
@@ -81,7 +81,7 @@
                   [article]="article"
                   (toggle)="onToggleFavorite($event)">
                   {{ article.favorited ? 'Unfavorite' : 'Favorite' }} Article <span class="counter">({{ article.favoritesCount }})</span>
-                </app-favorite-button>
+                </app-favorite-button> -->
               </span>
       
             </app-article-meta>
@@ -91,7 +91,7 @@
             <div class="col-xs-12 col-md-8 offset-md-2">
       
               <div *appShowAuthed="true">
-                <app-list-errors [errors]="commentFormErrors"></app-list-errors>
+                <!-- <app-list-errors [errors]="commentFormErrors"></app-list-errors> -->
                 <form class="card comment-form" (ngSubmit)="addComment()">
                   <fieldset [disabled]="isSubmitting">
                     <div class="card-block">
