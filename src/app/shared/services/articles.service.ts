@@ -46,6 +46,7 @@ export class ArticleService {
     }
 
         favorite(slug): Observable<Article> {
+            console.log('working fine');
             return this.apiService.post('/articles/' + slug + '/favorite');
         }
 

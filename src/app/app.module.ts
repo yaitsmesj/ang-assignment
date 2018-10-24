@@ -14,18 +14,18 @@ import { AuthModule } from './auth/auth.module';
 import { HttpClientModule } from '@angular/common/http';
 
 const rootRouting: ModuleWithProviders = RouterModule.forRoot([
-    // {
-    //   path: 'settings',
-    //   loadChildren: './settings/settings.module#SettingsModule'
-    // },
-    // {
-    //   path: 'profile',
-    //   loadChildren: './profile/profile.module#ProfileModule'
-    // },
-    // {
-    //   path: 'editor',
-    //   loadChildren: './editor/editor.module#EditorModule'
-    // },
+    {
+      path: 'settings',
+      loadChildren: './settings/settings.module#SettingsModule'
+    },
+     {
+      path: 'profile',
+      loadChildren: './profile/profile.module#ProfileModule'
+    },
+    {
+      path: 'editor',
+      loadChildren: './editor/editor.module#EditorModule'
+    },
     {
       path: 'article',
       loadChildren: './article/article.module#ArticleModule'

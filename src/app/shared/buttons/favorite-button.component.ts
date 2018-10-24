@@ -21,16 +21,20 @@ export class favoriteButtonComponent {
     isSubmitting = false;
 
     toggleFavorite() {
+        console.log('method starts');
         this.isSubmitting = true;
 
         this.userService.isAuthenticated.pipe(concatMap(
             (authenticated) => {
                 if(!authenticated) {
+                    console.log("1st");
                     this.router.navigateByUrl('/login');
+                    console.log("2nd");
                     return of(null);
                 }
-
+                console.log(this.article);
                 if(!this.article.favorited) {
+                    console.log('this is working');
                     return this.articleService.favorite(this.article.slug)
                         .pipe(tap(
                             data => {
@@ -41,6 +45,8 @@ export class favoriteButtonComponent {
                         ));
 
                         } else {
+                            console.log('else is working');
+
                             return this.articleService.unfavorite(this.article.slug)
                                 .pipe(tap(
                                     data => {

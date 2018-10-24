@@ -6,8 +6,8 @@ import { RouterModule } from '@angular/router';
 import { ListErrorsComponent } from './list-errors.component';
 import { ShowAuthedDirective } from './show-authed.directive';
 import { ArticleListComponent, ArticleMetaComponent, ArticlePreviewComponent } from './article-helpers';
-import { ArticleService, ApiService, UserService } from './services';
-import { HttpClient, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { ArticleService, ApiService, UserService, ProfileService } from './services';
+import { HttpClient, HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { HttpTokenInterceptor } from './http.token.interceptor';
 import { JwtService } from './services/jwt.service';
 import { CommentsService } from './services/comments.service';
@@ -33,7 +33,7 @@ import { favoriteButtonComponent, FollowButtonComponent } from './buttons';
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: HttpTokenInterceptor,
-    multi: true }, ArticleService, JwtService, ApiService, UserService,CommentsService
+    multi: true }, ArticleService, JwtService, ApiService, UserService,CommentsService,ProfileService
   ],
   exports: [
     CommonModule,
@@ -47,7 +47,8 @@ import { favoriteButtonComponent, FollowButtonComponent } from './buttons';
     ArticleMetaComponent,
     ArticlePreviewComponent,
     favoriteButtonComponent,
-    FollowButtonComponent
+    FollowButtonComponent,
+    HttpClientModule
   ]
 })
 export class SharedModule {}

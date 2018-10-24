@@ -30,6 +30,7 @@ export class ArticleComponent implements OnInit {
         this.route.data.subscribe(
             (data: { article: Article }) => {
                 this.article = data.article;
+                console.log(this.article);
                 this.populateComments();
             }
         );
@@ -47,8 +48,10 @@ export class ArticleComponent implements OnInit {
 
         if(favorited) {
             this.article.favoritesCount++;
+            console.log("favorite")
         } else {
             this.article.favoritesCount--;
+            console.log("unfavorite")
         }
     }
 

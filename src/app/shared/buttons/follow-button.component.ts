@@ -1,6 +1,6 @@
 import { Component, Input, Output, EventEmitter } from "@angular/core";
 import { Router } from "@angular/router";
-import { UserService } from "../services";
+import { UserService, ProfileService } from "../services";
 import { concatMap, tap } from "rxjs/operators";
 import { of } from "rxjs";
 import { Profile } from "../models";
@@ -11,7 +11,7 @@ import { Profile } from "../models";
 })
 export class FollowButtonComponent {
     constructor(
-        private profileService: ProfileSevice,
+        private profileService: ProfileService,
         private router: Router,
         private userService: UserService
     ) {}

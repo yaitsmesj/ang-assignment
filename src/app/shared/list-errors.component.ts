@@ -2,7 +2,7 @@ import { Component, Input } from "@angular/core";
 import { Errors } from './models';
 
 @Component({
-    selector: 'list-errors',
+    selector: 'app-list-errors',
     templateUrl: './list-errors.component.html'
 })
 export class ListErrorsComponent {
