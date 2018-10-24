@@ -6,7 +6,7 @@ import { RouterModule } from '@angular/router';
 import { ListErrorsComponent } from './list-errors.component';
 import { ShowAuthedDirective } from './show-authed.directive';
 import { ArticleListComponent, ArticleMetaComponent, ArticlePreviewComponent } from './article-helpers';
-import { ArticleService, ApiService, UserService, ProfileService } from './services';
+import { ArticleService, ApiService, UserService, ProfileService, AuthGuard } from './services';
 import { HttpClient, HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { HttpTokenInterceptor } from './http.token.interceptor';
 import { JwtService } from './services/jwt.service';
@@ -33,7 +33,7 @@ import { favoriteButtonComponent, FollowButtonComponent } from './buttons';
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: HttpTokenInterceptor,
-    multi: true }, ArticleService, JwtService, ApiService, UserService,CommentsService,ProfileService
+    multi: true }, ArticleService, JwtService, ApiService, UserService,CommentsService,ProfileService, AuthGuard
   ],
   exports: [
     CommonModule,

@@ -28,6 +28,7 @@ import { UserService, User } from "../shared";
     }
   
     ngOnInit() {
+      console.log('setting on init');
       Object.assign(this.user, this.userService.getCurrentUser());
       this.settingsForm.patchValue(this.user);
     }
